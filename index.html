@@ -1,0 +1,85 @@
+<!DOCTYPE html><html class=''>
+<head><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="canonical" href="http://codepen.io/TimLamber/pen/vEpPzb" />
+
+<link rel='stylesheet' href='/assets/reset/normalize.css'><link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+<style class="cp-pen-styles">.pxOuter {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-filter: url(#blur);
+          filter: url(#blur);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='5');
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: url(https://unsplash.imgix.net/photo-1414446483597-8d8f792bfe39?q=75&fm=jpg&s=2756ab87b786786b9e689b6204d99c90);
+  background-size: cover;
+  height: 100vh;
+  position: absolute;
+}
+.igSVG {
+  position: absolute;
+  top: -999em;
+}
+.igSVG filter {
+  color-interpolation-filters: sRGB;
+}
+.igSVG filter * {
+  lighting-color: #ccc;
+}
+.igH {
+  position: relative;
+  font-weight: bold;
+  font-size: 18vw;
+  text-align: center;
+  text-shadow: 0 0 .7px, 0 0 1.1px, 0 0 1.1px;
+  -webkit-filter: url(#in-and-out);
+          filter: url(#in-and-out);
+  margin: 0;
+  line-height: 100vh;
+}
+.igH:before,
+.igH:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  content: attr(data-text);
+}
+.igH:before {
+  color: #036;
+  text-shadow: -1px -1px 1px, 0 -1px 1px, 1px -1px 1px, 1px 0 1px, 1px 1px 1px, 0 1px 1px, -1px 1px 1px, -1px 0 1px;
+}
+.igH:after {
+  color: rgba(40, 80, 120, 0.9);
+  -webkit-filter: url(#lightA3);
+          filter: url(#lightA3);
+}
+</style></head><body>
+<!-- Super impressed with //codepen.io/nokiss/pen/RNPxjY/ //users.atw.hu/nokiss/gallery/gallery.htm   &  -->
+
+<div class="pxOuter">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <filter id="blur">
+            <feGaussianBlur stdDeviation="5" />
+        </filter>
+    </svg>
+</div>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="igSVG">
+    <filter id=lightA3>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="B" />
+        <feSpecularLighting in="B" specularExponent="128" result="S">
+            <feDistantLight azimuth="225" elevation="70"/>
+        </feSpecularLighting><feComposite in="S" in2="SourceAlpha" operator="in" result="L"/>
+        <feComposite in="SourceGraphic" in2="L" operator="arithmetic" k1="0"k2="1"k3="1" k4="0"/>
+    </filter>
+    <filter id=in-and-out>
+        <feGaussianBlur stdDeviation="4" in="SourceAlpha"/>
+        <feOffset result="fO" dy="5" dx="5"/>
+        <feComposite in2="fO" operator="xor" in="SourceGraphic"/>
+    </filter>
+</svg>
+
+<h1 class="igH" data-text="Glass Blur">Glass Blur</h1>
+
+</body></html>
